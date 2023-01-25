@@ -1,44 +1,40 @@
 # HamArc Archiver
 
-## Задача
 
-Реализовать помехоустойчивый архиватор файлов без сжатия **HamArc**, объединяющий несколько файлов в один архив. Для помехоустойчивого кодирования использовать [Коды Хэмминга](https://en.wikipedia.org/wiki/Hamming_code). Формат хранения данных в архиве также является частью задачи.
+Implementation of a fault-tolerant file archiver without compression **HamArc**, which combines multiple files into one archive. Use [Hamming Codes](https://en.wikipedia.org/wiki/Hamming_code) for fault-tolerant encoding.
 
-## Требования
+## Features
 
-* Объединять несколько файлов ( >= 1) в один архив в формате .haf (Hamming Archive File)
-* Извлекать все или отдельные файлы из архива
-* Объединять несколько архивов в один
-* Восстанавливать архив при повреждениях, либо сообщать о том что это невозможно
-* Возвращать список файлов в архиве
+* Combines multiple files ( >= 1) into one archive in .haf format (Hamming Archive File)
+* Extracts all or individual files from the archive
+* Combines multiple archives into one
+* Restores the archive when damaged, or inform that this is impossible
+* Returns a list of files in the archive
 
-## Реализация
+Console application supports the following command line arguments:
 
-Консольное приложение, поддерживающее следующие аргументы командной строки:
+**-c, --create**           - create a new archive
 
-**-c, --create**           - создание нового архива 
+**-f, --file=[ARHCNAME]**  - name of the archive file
 
-**-f, --file=[ARHCNAME]**  - имя файла с архивом 
+**-l, --list**             - display a list of files in the archive
 
-**-l, --list**             - вывести список файлов в архиве
+**-x, --extract**          - extract files from the archive (if not specified, all files)
 
-**-x, --extract**          - извлечь файлы из архива  (если не указано, то все файлы)
+**-a, --append**           - add a file to the archive
 
-**-a, --append**           - добавить файл в архив
+**-d, --delete**           - delete a file from the archive
 
-**-d, --delete**           - удалить файл из архива
+**-A, --concatenate**      - merge two archives
 
-**-A, --concatenate**      - смерджить два архива
+**File names are passed as free arguments**
 
-**Имена файлов передаются свободными аргументами**
+**Arguments for encoding and decoding are also passed through the command line**
 
-**Аргументы для кодирования и декодирования так же передаются через командую строку** (Названия и типы аргументов часть задания)
-
-### Примеры запуска
+### Examples of launch
    
 *hamarc --create --file=ARCHIVE FILE1 FILE2 FILE3*
    
 *hamarc -l -f ARCHIVE*
    
 *hamarc --concantenate  ARCHIVE1 ARCHIVE2 -f ARCHIVE3*
-
